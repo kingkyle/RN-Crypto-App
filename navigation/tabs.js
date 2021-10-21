@@ -6,7 +6,7 @@ const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{headerShown: false}}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Porfolio" component={Home} />
       <Tab.Screen name="Transaction" component={Home} />
