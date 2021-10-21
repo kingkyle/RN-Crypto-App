@@ -1,6 +1,7 @@
 import {COLORS, FONTS, SIZES, dummyData} from '../../constants';
 import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 
+import {CurrencyLabel} from '..';
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
 
@@ -41,21 +42,11 @@ const Trending = () => {
               navigation.navigate('CryptoDetail', {currency: item})
             }>
             {/* Currency  */}
-            <View style={{flexDirection: 'row'}}>
-              <View>
-                <Image
-                  source={item.image}
-                  resizeMode="cover"
-                  style={{width: 25, height: 25, marginTop: 5}}
-                />
-              </View>
-              <View style={{marginLeft: SIZES.base}}>
-                <Text style={{...FONTS.h3}}>{item.currency}</Text>
-                <Text style={{...FONTS.body4, color: COLORS.gray}}>
-                  {item.code}
-                </Text>
-              </View>
-            </View>
+            <CurrencyLabel
+              currency={item.currency}
+              icon={item.image}
+              code={item.code}
+            />
 
             {/* Value  */}
             <View style={{marginTop: SIZES.radius}}>

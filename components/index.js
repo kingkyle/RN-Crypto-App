@@ -1,5 +1,6 @@
 import Header, {styles} from './Home/Header';
 
+import CurrencyLabel from './CurrencyLabel';
 import HeaderBar from './HeaderBar';
 import PriceAlert from './PriceAlert';
 import TabBarCustomButton from './Tab/TabBarCustomButton';
@@ -16,4 +17,5 @@ export {
   styles,
   TransactionHistory,
   HeaderBar,
+  CurrencyLabel,
 };
