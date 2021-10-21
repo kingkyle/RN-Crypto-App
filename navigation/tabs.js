@@ -1,9 +1,8 @@
-import {COLORS, icons} from '../constants';
+import {COLORS, SIZES, icons} from '../constants';
+import {TabBarCustomButton, TabIconDefault} from '../components';
 
 import Home from '../screens/Home';
 import React from 'react';
-import TabBarCustomButton from '../components/Tab/TabBarCustomButton';
-import TabIconDefault from '../components/Tab/TabIconDefault';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
@@ -20,9 +19,10 @@ const Tabs = () => {
           bottom: 0,
           right: 0,
           left: 0,
-          height: 100,
+          height: 80,
           backgroundColor: COLORS.white,
           borderTopColor: 'transparent',
+          paddingTop: SIZES.base * 2,
         },
       }}>
       <Tab.Screen
