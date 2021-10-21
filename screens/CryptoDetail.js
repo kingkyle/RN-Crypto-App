@@ -1,12 +1,15 @@
-import {Text, View} from 'react-native';
+import {SafeAreaView, Text} from 'react-native';
 
+import {COLORS} from '../constants';
+import {HeaderBar} from '../components';
 import React from 'react';
 
 const CryptoDetail = () => {
   return (
-    <View>
+    <SafeAreaView style={{flex: 1, backgroundColor: COLORS.lightGray1}}>
+      <HeaderBar right={true} />
       <Text>Crypto Detail</Text>
-    </View>
+    </SafeAreaView>
   );
 };
 

@@ -6,7 +6,7 @@ import React from 'react';
 
 const Home = () => {
   React.useEffect(() => {
-    LogBox.ignoreLogs(['VirtualizedList should never be nested']);
+    LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, []);
   return (
     <ScrollView>
