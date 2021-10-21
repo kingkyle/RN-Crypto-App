@@ -4,7 +4,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 const Tab = createBottomTabNavigator();
 
-const tabs = () => {
+const Tabs = () => {
   return (
     <Tab.Navigator>
       <Tab.Screen name="Home" component={Home} />
@@ -16,4 +16,4 @@ const tabs = () => {
   );
 };
 
-export default tabs;
+export default Tabs;
