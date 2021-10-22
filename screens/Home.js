@@ -29,7 +29,7 @@ const Home = () => {
           <Text
             style={{
               color: COLORS.white,
-              ...FONTS.body5,
+              ...FONTS.body4,
               lineHeight: 18,
               marginTop: SIZES.base,
             }}>
