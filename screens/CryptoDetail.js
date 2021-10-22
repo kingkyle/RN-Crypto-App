@@ -1,6 +1,6 @@
 import {Animated, SafeAreaView, Text, View} from 'react-native';
 import {COLORS, FONTS, SIZES, dummyData} from '../constants';
-import {CurrencyLabel, HeaderBar, styles} from '../components';
+import {CurrencyLabel, HeaderBar, TextButton, styles} from '../components';
 import {
   VictoryAxis,
   VictoryChart,
@@ -13,8 +13,12 @@ import {VictoryCustomTheme} from '../styles';
 
 const CryptoDetail = ({route}) => {
   const scrollX = new Animated.Value(0);
+  const dotPosition = Animated.divide(scrollX, SIZES.width);
   const numOfCharts = [1, 2, 3];
   const [selectedCurrency, setSelectedCurrency] = React.useState(null);
+  const [chartOptions, setChartOptions] = React.useState(
+    dummyData.chartOptions,
+  );
   const [selectOption, setSelectedOption] = React.useState(
     dummyData.chartOptions[0],
   );
@@ -118,8 +122,79 @@ const CryptoDetail = ({route}) => {
             </View>
           ))}
         </Animated.ScrollView>
-        {/* Dates  */}
+        {/* Options  */}
+        <View
+          style={{
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            paddingHorizontal: SIZES.radius,
+          }}>
+          {chartOptions.map(option => (
+            <TextButton
+              key={`ootion-${option.id}`}
+              label={option.label}
+              customContainerStyle={{
+                paddingHorizontal: SIZES.base,
+                height: 25,
+                width: 55,
+                borderRadius: 15,
+                backgroundColor:
+                  selectOption.id === option.id
+                    ? COLORS.primary
+                    : COLORS.lightGray,
+              }}
+              customLabelStyle={{
+                color:
+                  selectOption.id === option.id ? COLORS.white : COLORS.gray,
+                ...FONTS.body5,
+              }}
+              onPress={() => setSelectedOption(option)}
+            />
+          ))}
+        </View>
         {/* Dots  */}
+        <View style={{height: 15, marginTop: 15}}>
+          <View
+            style={{
+              flexDirection: 'row',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}>
+            {numOfCharts.map((item, index) => {
+              const opacity = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [0.3, 1, 0.3],
+                extrapolate: 'clamp',
+              });
+              const dotSize = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [SIZES.base * 0.8, 10, SIZES.base * 0.8],
+                extrapolate: 'clamp',
+              });
+              const dotColor = dotPosition.interpolate({
+                inputRange: [index - 1, index, index + 1],
+                outputRange: [COLORS.gray, COLORS.primary, COLORS.gray],
+                extrapolate: 'clamp',
+              });
+
+              return (
+                <Animated.View
+                  key={`dot-${index}`}
+                  style={{
+                    borderRadius: SIZES.radius,
+                    marginHorizontal: 6,
+                    width: dotSize,
+                    height: dotSize,
+                    backgroundColor: dotColor,
+                    opacity: opacity,
+                  }}
+                />
+              );
+            })}
+          </View>
+        </View>
       </View>
     </SafeAreaView>
   );

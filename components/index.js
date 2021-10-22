@@ -5,6 +5,7 @@ import HeaderBar from './HeaderBar';
 import PriceAlert from './PriceAlert';
 import TabBarCustomButton from './Tab/TabBarCustomButton';
 import TabIconDefault from './Tab/TabIconDefault';
+import TextButton from './TextButton';
 import TransactionHistory from './TransactionHistory';
 import Trending from './Home/Trending';
 
@@ -18,4 +19,5 @@ export {
   TransactionHistory,
   HeaderBar,
   CurrencyLabel,
+  TextButton,
 };
