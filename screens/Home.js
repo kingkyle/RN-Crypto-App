@@ -1,10 +1,13 @@
-import {COLORS, FONTS, SIZES} from '../constants';
+import {COLORS, dummyData, FONTS, SIZES} from '../constants';
 import {Header, PriceAlert, TransactionHistory, styles} from '../components';
 import {LogBox, ScrollView, Text, TouchableOpacity, View} from 'react-native';
 
 import React from 'react';
 
 const Home = () => {
+  const [transactionHistory, setTransactionHistory] = React.useState(
+    dummyData.transactionHistory,
+  );
   React.useEffect(() => {
     LogBox.ignoreLogs(['VirtualizedLists should never be nested']);
   }, []);
@@ -51,7 +54,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         {/* End of Notice  */}
-        <TransactionHistory />
+        <TransactionHistory history={transactionHistory} />
       </View>
     </ScrollView>
   );

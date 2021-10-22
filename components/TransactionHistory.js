@@ -4,11 +4,7 @@ import {FlatList, Image, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 import {styles} from '.';
 
-const TransactionHistory = ({customContainerStyle}) => {
-  const [transactionHistory, setTransactionHistory] = React.useState(
-    dummyData.transactionHistory,
-  );
-
+const TransactionHistory = ({customContainerStyle, history}) => {
   return (
     <View
       style={{
@@ -22,7 +18,7 @@ const TransactionHistory = ({customContainerStyle}) => {
       }}>
       <FlatList
         scrollEnabled={false}
-        data={transactionHistory}
+        data={history}
         keyExtractor={item => `${item.id}`}
         showsVerticalScrollIndicator={false}
         ItemSeparatorComponent={() => (
